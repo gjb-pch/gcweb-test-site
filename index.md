@@ -6,5 +6,5 @@ layout: default
 ---
 <p> The first page of Jekyll page on GitHub</p>
 
-<script src="./Test/alert.js"></script>
+<script src="./alert.js"></script>
 
