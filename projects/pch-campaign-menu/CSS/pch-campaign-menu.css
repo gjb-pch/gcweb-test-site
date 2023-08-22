@@ -50,7 +50,7 @@
     background-color: #003c77 !important;
     border: 0px;
     font-size: 20px;
-    padding: 0em 1em;
+    padding: 0.5em 0em;
 }
 /*button closed*/
 .gcweb-menu button[aria-haspopup=true]:focus {
