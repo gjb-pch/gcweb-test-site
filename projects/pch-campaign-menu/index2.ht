@@ -1,0 +1,83 @@
+---
+title: Campaign Menu
+dateModified: 2023-08-21
+lang: en
+css:
+- CSS/pch-campaign-menu.css
+script: JS/pch-campaign-menu.js
+layout: no-container
+---
+     <div class="container">
+        <h2>Main content</h2>
+        <p>This content will appear below the menu and banner if the JS is working...</p>
+    </div>
+    <div class="wb-pch-campaign-menu">
+        <div class="row">
+            <div class="col-xs-12"> <span data-pic="data-pic" data-alt="This is Winterlude!" data-class="img-responsive full-width"> 
+                <!-- Default image: <div [data-src]> with no data-media attribute is displayed when:
+                        1. None of the other <div [data-src]> media queries match.
+                        2. The browser doesn't support media queries --> 
+                <span data-src="https://www.canada.ca/content/dam/pch/images/campaigns/winterlude/2021/wl-web-top-banner-500x250-EN.jpg"></span> 
+                <!-- Images for browsers with CSS media query support --> 
+                <span data-src="https://www.canada.ca/content/dam/pch/images/campaigns/winterlude/2021/wl-web-top-banner-500x250-EN.jpg" data-media="(min-width: 0px)"></span> <span data-src="https://www.canada.ca/content/dam/pch/images/campaigns/winterlude/2021/wl-web-top-banner-960x300-EN.jpg" data-media="(min-width: 500px)"></span> <span data-src="https://www.canada.ca/content/dam/pch/images/campaigns/winterlude/2021/wl-web-top-banner-1920x300-EN.jpg" data-media="(min-width: 960px)"></span> <span data-src="https://www.canada.ca/content/dam/pch/images/campaigns/winterlude/2021/wl-web-top-banner-1920x300-EN.jpg" data-media="(min-width: 1200px)"></span> 
+                <!-- Fallback content for non-JS browsers. -->
+                <noscript>
+                <img src="https://www.canada.ca/content/dam/pch/images/campaigns/winterlude/2021/wl-web-top-banner-1920x300-EN.jpg" alt="">
+                </noscript>
+                </span> </div>
+        </div>
+        <div class="row bg-winterlude">
+            <div class="col-xs-12">
+                <div class="container">
+                    <nav role="navigation" id="wb-sm" class="campaign-menu wb-menu visible-md visible-lg"  typeof="SiteNavigationElement">
+                        <div class="pnl-strt nvbar">
+                            <h2>Winterlude 2023 menu</h2>
+                            <ul role="menubar" class="list-inline menu">
+                                <li><a class="item" href="#" role="menuitem">Home</a></li>
+                                <li><a class="item" href="#" role="menuitem">Calendar</a></li>
+                                <li><a class="item" href="#lor" role="menuitem" aria-haspopup="true">What's happening<span class="expicon glyphicon glyphicon-chevron-down"></span></a>
+                                    <ul role="menu" id="lor" class="sm list-unstyled" aria-expanded="false" aria-hidden="true">
+                                        <li><a href="#" role="menuitem">Venues</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="item" href="#" role="menuitem">Sculptures</a></li>
+                                <li><a class="item" href="#lorm" role="menuitem" aria-haspopup="true">About<span class="expicon glyphicon glyphicon-chevron-down"></span></a>
+                                    <ul role="menu" id="lorm" class="sm list-unstyled" aria-expanded="false" aria-hidden="true">
+                                        <li><a href="#" role="menuitem">About Winterlude</a></li>
+                                        <li><a href="#" role="menuitem">Over the years</a></li>
+                                        <li><a href="#" role="menuitem">Test</a></li>
+                                        <li><a href="#" role="menuitem">Media</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    
+                    <!-- second level middle child item "over the years", has a different length of underline -->
+                    <nav class="gcweb-menu" typeof="SiteNavigationElement">
+<h2 class="wb-inv">Menu</h2>
+<button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
+<ul role="menu" aria-orientation="vertical">
+<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Home</a></li>
+<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Calendar</a></li>
+<li role="presentation"><a role="menuitem" tabindex="-1" aria-haspopup="true" aria-controls="sub-menu-1" aria-expanded="false" href="#">What's happening</a>
+<ul id="sub-menu-1" role="menu" aria-orientation="vertical">
+<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Venues</a></li>
+</ul>
+</li>
+<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sculptures</a></li>
+<li role="presentation"><a role="menuitem" tabindex="-1" aria-haspopup="true" aria-controls="sub-menu-2" aria-expanded="false" href="#">About</a>
+<ul id="sub-menu-2" role="menu" aria-orientation="vertical">
+<li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Winterlude</a></li>
+<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Over the years</a></li>
+<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Media</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+
+has context menu
+                </div>
+            </div>
+        </div>
+    </div>
