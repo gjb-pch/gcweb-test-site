@@ -1,0 +1,38 @@
+---
+title: Campaign Menu
+dateModified: 2023-08-21
+lang: en
+css:
+- CSS/pch-campaign-menu.css
+script: JS/pch-campaign-menu.js
+layout: no-container
+---
+        <div class="container">
+        <h1>Main content</h1>
+        <p>Example of a new menu that uses megamenu for md and lg, and GCWeb menu for sm and xs.</p>
+    </div>
+    <div style="background:#003c77;">
+        <div class="container">
+            <nav class="gcweb-menu campaign-menu" typeof="SiteNavigationElement">
+                <h2 class="wb-inv">Winterlude Site Menu</h2>
+                <button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
+                <ul role="menu" aria-orientation="vertical">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="5-1-test-winterlude-megamenu-html.html">Home</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="5-1-test-winterlude-megamenu-html.html">Calendar</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" aria-haspopup="true" aria-controls="sub-menu-1" aria-expanded="false" href="5-1-test-winterlude-megamenu-html.html">What's happening</a>
+                        <ul id="sub-menu-1" role="menu" aria-orientation="vertical">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="5-1-test-winterlude-megamenu-html.html">Venues</a></li>
+                        </ul>
+                    </li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="5-1-test-winterlude-megamenu-html.html">Sculptures</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" aria-haspopup="true" aria-controls="sub-menu-2" aria-expanded="false" href="5-1-test-winterlude-megamenu-html.html">About</a>
+                        <ul id="sub-menu-2" role="menu" aria-orientation="vertical">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="5-1-test-winterlude-megamenu-html.html">About Winterlude</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="5-1-test-winterlude-megamenu-html.html">Over the years</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="5-1-test-winterlude-megamenu-html.html">Media</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
