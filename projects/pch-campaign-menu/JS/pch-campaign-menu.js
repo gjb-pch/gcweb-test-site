@@ -1,10 +1,8 @@
 /**
- * @title WET-BOEW Hello world plugin
- * @overview Plugin contained to show an example of how to create your custom WET plugin
- * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * @author @duboisp
+ * @title Campaign menu
+ * @author PCH
  */
-(function ($, window, wb) {
+(function ($, window, document, wb) {
     "use strict";
 
     /*
@@ -13,8 +11,8 @@
      * not once per instance of plugin on the page. So, this is a good place to define
      * variables that are common to all instances of the plugin on a page.
      */
-    var componentName = "wb-pch-campaign-menu",
-        selector = "." + componentName,
+    var componentName = "campaign-menu",
+        selector = "." + componentName + ".gcweb-menu",
         initEvent = "wb-init" + selector,
         $document = wb.doc,
         /**
@@ -22,6 +20,8 @@
          * @param {jQuery Event} event Event that triggered the function call
          */
         init = function (event) {
+            
+            var testing = true;
 
             // Start initialization
             // returns DOM object = proceed with init
@@ -32,21 +32,119 @@
 
             if (elm) {
 
-                $elm = $(elm);
+                // At this point, the GCWeb menu is already completed
+                $elm = $(elm);                
+                // Apply appropriate visible CSS classes to the GCWeb menu
+                $elm.addClass( "visible-sm visible-xs" );
+                
+                // Now, we need to use the GCWeb menu to create the megamenu for md and lg                
+                // If a megamenu is already present, abort to avoid duplicate wb-sm IDs 
+                var megamenuExists = document.querySelector("#wb-sm");
+                if (megamenuExists != undefined || megamenuExists != null) {
+                    console.info(componentName + " can't start, megamenu already exsits on the page");
+                    wb.ready($elm, componentName);
+                    return;
+                }
 
-                // ... Do the plugin initialisation
+                // Megamenu does not exist, let's start to build it
+                
+                // Retrieve the top level list items from GCWeb menu               
+                var gcwebMenuListItems = document.querySelectorAll(selector + " > ul > li");
+                //console.log(gcwebMenuListItems);
+            
+                // Start building mega menu
+                var megamenuHTML = "";
+                var listItemCounter = 0;
+                var subMenuCounter = 0;                
+                $.each(gcwebMenuListItems, function (key, element) {
+                    // console.log(key + ": " + element);
+                    listItemCounter++;
+                    
+                    // Get top level list item's anchor
+                    var listItemAnchor = element.querySelector("a");
+                    listItemAnchor.setAttribute('class', 'item');                    
+                    //console.log("anchor: ",  listItemAnchor);
+                    
+                    // Get top level list item's children
+                    var listItemchildren = element.querySelectorAll("li");
+                    //console.log("children: ",  listItemchildren);
+                    //console.log("children length: " + gcwebMenuListItems.length);                  
 
-                $("header").append($elm);
-                //$elm.replaceAll(".gcweb-menu");
+                    // Build top level list items, with and without submenus                    
+                    if(listItemchildren.length > 0) {
+                        // Use counter to generate dynamic href bookmarks and ids for submenus
+                        subMenuCounter++;
+                        
+                        // Build list item with a submenu
+                        let subMenuId = "menu-" + subMenuCounter;
+                        
+                        var submegamenuHTML = "";
+                        // TODO: Verify all the attributes
+                        megamenuHTML += '<li><a href="#' + subMenuId + '" class="item" tabindex="0" aria-posinset="' + listItemCounter + '" aria-setsize="' + gcwebMenuListItems.length + '" role="menuitem" aria-haspopup="true">' + listItemAnchor.textContent;
+                        if (!testing) {
+                            megamenuHTML += '<span class="expicon glyphicon glyphicon-chevron-down"></span>';
+                        }
+                        megamenuHTML += '</a>'; 
+                            
+                        $.each(listItemchildren, function (key, element) {
+                            //console.log(key + ": " + element);
+                            var listItemAnchor = element.querySelector("a");
+                            var href = listItemAnchor.getAttribute('href');                           
+                                
+                            // TODO: Add missing attributes present in the 
+                            submegamenuHTML += '<li><a href="' + href + '">' + listItemAnchor.textContent + '</a></li>';
+                        });
+                        
+                        megamenuHTML += '<ul class="sm list-unstyled" id="' + subMenuId + '" role="menu">' + submegamenuHTML + '</ul></li>';
+                    } 
+                    else {
+                        // Build list item without a submenu
+                        let href = listItemAnchor.getAttribute('href');
+                        megamenuHTML += '<li><a href="' + href + '">' + listItemAnchor.textContent + '</a></li>';
+                    }                    
+                });
+                
+                // Get GCWeb h2
+                var gcwebMenuH2 = document.querySelector(selector + " > h2");
+                
+                // Wrap menu HTML with the megamenu wrapper
+                megamenuHTML = `
+                <nav role="navigation" id="wb-sm" class="campaign-menu wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
+                    <div class="pnl-strt nvbar">
+                        <h2>` + gcwebMenuH2.textContent + `</h2>
+                        <ul role="menubar" class="list-inline menu">
+                        ` + megamenuHTML + `
+                        </ul>
+                    </div>
+                </nav>`;     
+                //console.log(megamenuHTML);
+                
+                // Add the megamenu
+                $elm.after( megamenuHTML );
+                
+                var megamenu = document.querySelector("#wb-sm");
+                // TODO: Verify why the following attribute is not retained when creating it above...
+                megamenu.setAttribute('typeof', 'SiteNavigationElement');
+                //console.log(megamenu);                
 
-                // Get the plugin JSON configuration set on attribute data-wb-campaignmenu
-                settings = wb.getData($elm, componentName);
-
-                // Call my custom event
-                $elm.trigger("ready", settings);
-
-                // Identify that initialization has completed
+                // Identify that initialization has completed - Does this conflic with GCWeb initialization? All we did to GCWeb menu was add classes for xs and sm visible... This might not be required.
                 wb.ready($elm, componentName);
+                
+                if(testing) {
+                    // Start the megamenu plugin
+                    
+                    // HACKS - Add the div required to build the hamburger menu, but hide it, since all we're trying to do is fully initialize the megamenu
+                    $( ".wb-menu" ).attr('data-trgt', 'mb-pnl');
+                    $( ".wb-menu" ).after( '<div id="mb-pnl" class="hidden"></div>');
+                    $( ".wb-menu" ).after( '<div id="wb-glb-mn" class="hidden"><h2> </h2></div>');
+
+                    // Initialize it
+                    $( ".wb-menu" ).trigger( "wb-init.wb-menu" );
+
+                    $( "#mb-pnl" ).remove();
+                    $( "#wb-glb-mn" ).remove();
+                    $( ".wb-menu" ).removeAttr('data-trgt');
+                }
             }
         };
 
@@ -72,4 +170,4 @@
     // Add the timer poke to initialize the plugin
     wb.add(selector);
 
-})(jQuery, window, wb);
+})(jQuery, window, document, wb);
