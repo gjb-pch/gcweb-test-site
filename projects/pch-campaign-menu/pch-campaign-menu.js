@@ -40,7 +40,7 @@
                 var gcWebMenus = document.querySelectorAll(".gcweb-menu");
                 if (gcWebMenus.length > 1) {
                     console.warn(componentName + " - gcweb menu already exsits on the page, hiding gcweb campaign menu");
-                    $elm.attr('hidden');
+                     $elm.addClass('hidden');
                     return;
                 }
                 
