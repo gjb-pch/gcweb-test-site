@@ -1,0 +1,144 @@
+/* Suggest this CSS selector */
+#wb-sm.campaign-menu {
+    background: #003c77;
+}
+/* remove table cell and text shadow on active state*/
+#wb-sm.campaign-menu .menu {
+    display: block;
+    text-shadow: none;
+}
+/* on hover */
+#wb-sm.campaign-menu .menu > li a:hover, #wb-sm.campaign-menu .menu > li.active.sm-open a:focus, #wb-sm.campaign-menu .menu > li.active.sm-open a:active, #wb-sm.campaign-menu .menu > li.active.sm-open a {
+    background: #ccc !important;
+    color: #333 !important;
+}
+/* on focus */
+#wb-sm.campaign-menu.menu > li a:focus, #wb-sm.campaign-menu.menu > li a:hover {
+    background: #003c77 !important;
+    text-shadow: none;
+}
+#wb-sm.campaign-menu .sm.open li a {
+    color: #333 !important;
+    background: #ccc !important;
+}
+/* focus within background*/
+#wb-sm.campaign-menu .menu .active, #wb-sm.campaign-menu .menu .selected, #wb-sm.campaign-menu .menu .wb-navcurr {
+    background: #ccc !important;
+    color: #333 !important;
+}
+/* hover on submenu item*/
+#wb-sm.campaign-menu .sm.open li a:active, #wb-sm.campaign-menu .sm.open li a:focus, #wb-sm.campaign-menu .sm.open li a:hover {
+    color: #fff !important;
+    background: #003c77 !important;
+}
+/* on lost focus*/
+#wb-sm.campaign-menu .menu > li.active > a, #wb-sm.campaign-menu .menu > li > a:hover {
+    background: #ccc;
+    color: #333;
+    text-shadow: None;
+}
+/*bottom bar color*/
+#wb-sm.campaign-menu .sm.open {
+    border-bottom: 5px solid #003c77 !important;
+}
+#wb-sm.campaign-menu .menu > li a {
+    padding: 0.5em 1em;
+    /*border-right: 1px solid #999;*/
+}
+#wb-sm.campaign-menu .menu {
+    border-right: 0px !important;
+}
+/*add right border for last child item on md screen*/
+@media screen and (max-width: 1199px) {
+    #wb-sm .menu > li:last-child {
+        border-right: 1px solid #999;
+    }
+}
+/* change on foucs background*/
+#wb-sm .menu > li a:focus {
+    background: #003c77 !important;
+}
+/*GCWEB Menu*/
+/*default color*/
+/*Button open with white background*/
+.campaign-menu.visible-xs.visible-sm button[aria-haspopup=true][aria-expanded=true] {
+    background-color: #fff !important;
+    border-color: #444;
+    color: #000;
+}
+/*.campaign-menu.visible-xs.visible-sm button[aria-haspopup=true][aria-expanded=true]:active {
+    color: #fff;
+}*/
+.campaign-menu.visible-xs.visible-sm button[aria-haspopup=true] {
+    background-color: #003c77 !important;
+    border: 0px;
+    font-size: 20px;
+}
+/*button closed*/
+.campaign-menu.visible-xs.visible-sm button[aria-haspopup=true]:focus {
+    background-color: #003c77 !important;
+    border: 1px dotted #fff;
+    color: #fff;
+}
+.campaign-menu.visible-xs.visible-sm button[aria-haspopup=true][aria-expanded=true] + [role=menu] {
+    border-right: #eee solid 0px !important;
+}
+/*Menu opened*/
+.campaign-menu.visible-xs.visible-sm [role=menu] {
+    background-color: #003c77 !important;
+    color: #fff;
+}
+/*remove boder lines*/
+.campaign-menu.visible-xs.visible-sm [role=menuitem], .campaign-menu.visible-xs.visible-sm [role=menuitem]:visited {
+    border-bottom: 0px;
+}
+/*remove first child top line*/
+.campaign-menu.visible-xs.visible-sm [role=menu] > li:first-child {
+    border-top: #444 solid 0px;
+}
+/*remove left border line*/
+.campaign-menu.visible-xs.visible-sm [role=menu] > li {
+    border-left: #444 solid 0px;
+}
+/*remove the border line of last item*/
+.campaign-menu.visible-xs.visible-sm [role=menu] > li:last-child {
+    border-bottom: #444 solid 0px;
+}
+/*remove submenu first child bottom border*/
+.campaign-menu.visible-xs.visible-sm [role=menu] [role=menu] [role=menuitem], .campaign-menu.visible-xs.visible-sm [role=menu] [role=menu] li:first-child [role=menuitem] {
+    border-bottom: 0px;
+}
+/*second sublist background*/
+.campaign-menu.visible-xs.visible-sm [role=menu] [role=menu] {
+    background-color: #e1e1e1 !important;
+}
+/* submenu item text color*/
+.campaign-menu.visible-xs.visible-sm [role=menu] [role=menu] li [role=menuitem] {
+    color: #333;
+    padding-left: 65px;
+}
+.campaign-menu.visible-xs.visible-sm [aria-expanded=true]:not(button) + [role=menu] li {
+    margin-left: 0px;
+}
+.campaign-menu.visible-xs.visible-sm [aria-expanded=true]:not(button) + [role=menu] li:first-child [role=menuitem], .campaign-menu.visible-xs.visible-sm [aria-expanded=true]:not(button) + [role=menu] li:last-child [role=menuitem] {
+    padding-left: 65px;
+}
+/*change focus to using border, remove blue background of submenu item*/
+.campaign-menu [role=menu] [role=menu] [role=menuitem]:focus, .campaign-menu [role=menu] [role=menu] li:first-child [role=menuitem]:focus, .campaign-menu [role=menu] [role=menu] li:last-child [role=menuitem]:focus {
+    border: 1px solid #003c77;
+    background-color: #e1e1e1 !important;
+    color: #333 !important;
+}
+/*first and last submenu item on hover change to blue*/
+.campaign-menu [role=menu] [role=menu] [role=menuitem]:hover, .campaign-menu [role=menu] [role=menu] li:first-child [role=menuitem]:hover, .campaign-menu [role=menu] [role=menu] li:last-child [role=menuitem]:hover {
+    color: #fff !important;
+    background: #003c77 !important;
+    text-decoration: none;
+}
+.campaign-menu.visible-xs.visible-sm [role=menu] [role=menu] li [role=menuitem]:hover {
+    color: #fff;
+}
+/* remove the underline of sub menu item */
+.campaign-menu.visible-xs.visible-sm [role=menu] [role=menu] li [role=menuitem], .campaign-menu.visible-xs.visible-sm [role=menu] [role=menu] li:first-child [role=menuitem] {
+    text-decoration: none;
+}
